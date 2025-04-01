@@ -17,7 +17,7 @@ pipeline {
      }
       stage ("Build application"){
        steps {
-        sh "maven clean package"
+        sh '/usr/share/maven/bin/mvn clean package'
        }
      }
      stage ("test application"){
