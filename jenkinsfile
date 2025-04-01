@@ -1,0 +1,29 @@
+pipeline {
+   agent { label 'jenkins-agent' }
+   tools {
+           jdk 'java17'
+           maven 'Maven3'
+    }
+   stages {
+     stage ( "cleanup workspace" ) {
+       steps {
+       cleanWs()
+       } 
+     }
+     stage ( "checkout from SCM" ) {
+      steps {
+       git branch: 'main', credentialsId: 'github', url: 'https://github.com/hariharanbharatha/feb02practice'
+       }
+     }
+      stage ("Build application"){
+       steps {
+        sh "maven clean package"
+       }
+     }
+     stage ("test application")
+      steps {
+        sh "mvn test"
+        }
+      }
+   }
+}
