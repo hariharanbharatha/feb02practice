@@ -17,8 +17,7 @@ pipeline {
      }
       stage ("Build application"){
        steps {
-        sh 'ls -l'  // List files to check if pom.xml exists
-      sh '/usr/share/maven/bin/mvn clean package'
+      sh "mvn clean package"
        }
      }
      stage ("test application"){
